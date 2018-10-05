@@ -1,23 +1,68 @@
 <!DOCTYPE html>
 <html ng-app="currencyApp">
+    
 
 <head>
     <title>Currency Converter</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
+   
 </head>
 
 <body>
 
-    <div ng-controller="conversion">
+    <div ng-controller="conversion" class="converter">
+
+
+        <div class="converter__from-to ">
+            <label class="margin-right-10px grey-bg
+            margin-bottom-10px">From:</label>
+
+            <select ng-model="fromSelected" ng-change="fromSelectionchange(fromBox)"
+             class="margin-right-10px margin-bottom-10px">
+                <option selected="true" ng-selected="true">GBP</option>
+                <option ng-clock ng-repeat="(currency,rate) in currencies">
+                    {{currency}}
+                </option>
+
+            </select>
+            
+            <input type="number" ng-model="fromBox" class="margin-bottom-10px"
+            ng-change="convertFrom(fromBox)" placeholder="Amount" />
+
+        </div>
+
+        <div class="converter__from-to">
+            <label class="margin-right-30px grey-bg
+             margin-bottom-10px">To:</label>
+
+            <select ng-model="toSelected" class="margin-right-10px margin-bottom-10px"
+            ng-change="toSelectionchange(toBox)">
+                <option selected="true" ng-selected="true">GBP</option>
+                <option ng-clock ng-repeat="(currency,rate) in currencies">{{currency}}
+                </option>
+
+            </select>
+            
+            <input type="number" ng-model="toBox" class="margin-bottom-10px" 
+            ng-change="convertTo(toBox)" placeholder="Amount" />
+
+        </div>
+
+        <label class="exchange-rate grey-bg">
+            Today's exchange rate for 1 {{fromSelected}} to {{toSelected}} is {{exchangeRate}}
+        </label>
 
 
 
     </div>
 
 
+  
     <script src="angular.min.js"></script>
     <script src="cytoscape.js"></script>
     <script src="app.js"></script>
+   
 </body>
 
 </html>
