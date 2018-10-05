@@ -1,10 +1,16 @@
 body{
     background-color: #cccccc;
-    background-image: url("bg-img.jpg");
+    background-image: url("bg.png");
+    text-align: center;
+}
+
+.converter{
+    font-style: oblique;
+    font-size: 22px;
 }
 
 .converter__from-to{
-    text-align: center;
+    justify-content: center;
     display: flex;
     flex-direction: column;
 }
@@ -33,6 +39,7 @@ body{
         text-align: center;
         display: flex;
         flex-direction: row;
+        justify-content: center;
         
     }
     
