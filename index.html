@@ -67,9 +67,15 @@
 
         </div>
 
-        <label class="exchange-rate margin-bottom-10px">
+        <h3 class="exchange-rate margin-bottom-10px">
             Today's exchange rate for 1 {{fromSelected}} to {{toSelected}} is {{exchangeRate}}
-        </label>
+        </h3>
+
+        <h2 ng-hide="isGraph"> Select a currency to show the graph</h2>
+
+        <h3 ng-if="isGraph">
+            Here is a graph that shows the exchange rate of 1 {{fromSelected}} to {{toSelected}} from {{startDate}} to {{endDate}}
+        </h3>
 
 
 

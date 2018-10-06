@@ -21,6 +21,7 @@ app.controller("conversion", [
     $scope.toSelected = "GBP";
     $scope.exchangeRate = 1;
     $scope.apiError = false;
+    $scope.isGraph = false;
 
 
     // calculates todays exchange rate based on the currency in From compared to To
@@ -38,6 +39,7 @@ app.controller("conversion", [
       let currentYear = date.getFullYear();
       let startMonth = currentMonth - 1;
       let startYear = currentYear;
+      
       if (currentMonth == 1) {
         startMonth = 12;
         startYear = currentYear - 1;
@@ -45,6 +47,9 @@ app.controller("conversion", [
 
       if (currentMonth < 10) currentMonth = `0${currentMonth}`;
       if (startMonth < 10) startMonth = `0${startMonth}`;
+
+      $scope.startDate = `01/${startMonth}/${startYear}`;
+      $scope.endDate = `01/${currentMonth}/${currentYear}`;
 
       $http
         .get(
@@ -55,6 +60,8 @@ app.controller("conversion", [
           $log.warn(error)
           $scope.apiError = true;
         });
+
+        $scope.isGraph =true;
     }
 
     // handles selection from list event in the From side
@@ -155,7 +162,7 @@ function drawGraph(data) {
 
 // find the smallest exchange rate in a given list
 function getMinRate(data) {
-  let min = 9999999;
+  let min = Infinity;
   Object.keys(data.rates).forEach(day => {
     let dailyRate = data.rates[day][Object.keys(data.rates[day]).join("")];
     min = Math.min(min, dailyRate);
