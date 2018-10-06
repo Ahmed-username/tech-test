@@ -60,6 +60,12 @@
     background-color: black;
     text-align: center;
   }
+
+  .error {
+    color: #e60000;
+    background-color: black;
+    text-align: center;
+  }
   
   #cy {
     display: none;

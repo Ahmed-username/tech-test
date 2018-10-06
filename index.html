@@ -14,8 +14,11 @@
 
     <h1 class="header">₡urr€ncy ₡onv€rter</h1>
 
+    
+
     <div ng-controller="conversion" class="converter">
 
+     <h1 class="error" ng-if="apiError">Api call error. Check Console for more details.</h1>
 
         <div class="converter__from-to ">
             

@@ -11,12 +11,16 @@ app.controller("conversion", [
         "https://openexchangerates.org/api/latest.json?app_id=546b17d695434f74953c47ec5d7f9f7d&base=GBP"
       )
       .then(result => ($scope.currencies = result.data.rates))
-      .catch(err => $log.warn(err));
+      .catch(err => {
+        $log.warn(err);
+        $scope.apiError = true;
+      });
 
     //currency converter initial values
     $scope.fromSelected = "GBP";
     $scope.toSelected = "GBP";
     $scope.exchangeRate = 1;
+    $scope.apiError = false;
 
 
     // calculates todays exchange rate based on the currency in From compared to To
@@ -26,6 +30,8 @@ app.controller("conversion", [
         (1 / currencies[fromSelected.trim()]) * currencies[toSelected.trim()];
     }
 
+
+    // make an api call to get exchange rate over the last month
     function getMonthlyRate() {
       const date = new Date();
       let currentMonth = date.getMonth() + 1;
@@ -45,7 +51,10 @@ app.controller("conversion", [
           `https://openexchangerates.org/api/time-series.json?app_id=546b17d695434f74953c47ec5d7f9f7d&start=${startYear}-${startMonth}-01&end=${currentYear}-${currentMonth}-01&symbols=${$scope.toSelected.trim()}&base=${$scope.fromSelected.trim()}`
         )
         .then(result => drawGraph(result.data))
-        .catch(error => $log.warn(error));
+        .catch(error => {
+          $log.warn(error)
+          $scope.apiError = true;
+        });
     }
 
     // handles selection from list event in the From side
@@ -84,6 +93,8 @@ app.controller("conversion", [
   }
 ]);
 
+
+// draw a graph for an exhange rate over a period of time
 function drawGraph(data) {
   let cy = cytoscape({
     container: document.getElementById("cy"),
@@ -142,6 +153,7 @@ function drawGraph(data) {
   
 }
 
+// find the smallest exchange rate in a given list
 function getMinRate(data) {
   let min = 9999999;
   Object.keys(data.rates).forEach(day => {
@@ -151,6 +163,7 @@ function getMinRate(data) {
   return min;
 }
 
+// magnify the rate to an integer of 3 digits
 function getY(rate) {
   let arrayFromRate = Array.from(rate.toString());
   let value = "";
