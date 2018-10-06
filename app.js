@@ -16,8 +16,6 @@ app.controller("conversion", [
     //currency converter initial values
     $scope.fromSelected = "GBP";
     $scope.toSelected = "GBP";
-    $scope.fromBox = 1;
-    $scope.toBox = 1;
     $scope.exchangeRate = 1;
 
     // calculates todays exchange rate based on the currency in From compared to To
