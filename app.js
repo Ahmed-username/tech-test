@@ -130,6 +130,7 @@ function drawGraph(data) {
 
   cy.add(nodes);
   cy.add(edges);
+  
 }
 
 function getMinRate(data) {
