@@ -86,14 +86,16 @@ app.controller("conversion", [
 function drawGraph(data) {
   let cy = cytoscape({
     container: document.getElementById("cy"),
+    zoom: 0.7,
+    pan: {x:90, y:40},
     style: [
       // the stylesheet for the graph
       {
         selector: "node",
         style: {
-          "background-color": "#666",
+          "background-color": "#779126",
           "label": "data(id)",
-          "color": "blue"
+          "color": "black"
         }
       }
     ]
@@ -104,7 +106,7 @@ function drawGraph(data) {
     const dailyRate = data.rates[day][Object.keys(data.rates[day]).join("")];
     const positionX = index * 30;
     const positionY = (getY(dailyRate) - minRate) * 40;
-    const label = `#${index + 1}: ${Math.round(dailyRate * 1000) / 1000}`;
+    const label = `${index + 1}: ${Math.round(dailyRate * 100) / 100}`;
     const node = {
       group: "nodes",
       data: { id: label },

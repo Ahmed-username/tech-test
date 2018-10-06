@@ -1,7 +1,5 @@
 
  body {
-  /* background-color: #cccccc;
-  background-image: url("bg.png"); */
   background-image: repeating-linear-gradient( #3b8ec2, #ddd, #3b8ec2);
   
 }
@@ -152,7 +150,7 @@
     #cy {
       width: 900px;
       height: 400px;
-      background-color: azure;
+      background-color: #ddd;
       display: block;
       margin: auto;
     }
