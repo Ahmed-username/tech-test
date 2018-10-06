@@ -126,10 +126,13 @@ function drawGraph(data) {
     const positionX = index * 30;
     const positionY = (getY(dailyRate) - minRate) * 40;
     const label = `${index + 1}: ${Math.round(dailyRate * 100) / 100}`;
+    const colour = ((index+1)%2 === 0 ? "#bb3e3b" : "#779126")
+    const textPosition = ((index+1)%2 === 0 ? "top" : "bottom")
     const node = {
       group: "nodes",
       data: { id: label },
-      position: { x: positionX, y: positionY }
+      position: { x: positionX, y: positionY },
+      style: {color: colour, "background-color":colour, "text-valign": textPosition}
     };
     return node;
   });
