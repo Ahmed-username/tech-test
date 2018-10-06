@@ -18,6 +18,7 @@ app.controller("conversion", [
     $scope.toSelected = "GBP";
     $scope.exchangeRate = 1;
 
+
     // calculates todays exchange rate based on the currency in From compared to To
     function calcExchangeRate() {
       const { currencies, fromSelected, toSelected } = $scope;
@@ -86,8 +87,8 @@ app.controller("conversion", [
 function drawGraph(data) {
   let cy = cytoscape({
     container: document.getElementById("cy"),
-    zoom: 0.7,
-    pan: {x:90, y:40},
+    zoom: 1,
+    pan: {x:0, y:0},
     style: [
       // the stylesheet for the graph
       {
@@ -130,6 +131,14 @@ function drawGraph(data) {
 
   cy.add(nodes);
   cy.add(edges);
+
+  cy.animate(
+    {
+    pan: { x: 100, y: 50 },
+  zoom: 0.7,
+  duration: 1000
+    }
+  )
   
 }
 
