@@ -73,7 +73,7 @@
 
         <h2 ng-hide="isGraph"> Select a currency to show the graph</h2>
 
-        <h3 ng-if="isGraph">
+        <h3 ng-if="isGraph && !apiError">
             Here is a graph that shows the exchange rate of 1 {{fromSelected}} to {{toSelected}} from {{startDate}} to {{endDate}}
         </h3>
 
