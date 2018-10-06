@@ -125,7 +125,7 @@ function drawGraph(data) {
     const dailyRate = data.rates[day][Object.keys(data.rates[day]).join("")];
     const positionX = index * 30;
     const positionY = (getY(dailyRate) - minRate) * 40;
-    const label = `${index + 1}: ${Math.round(dailyRate * 100) / 100}`;
+    const label = `(${index + 1})${Math.round(dailyRate * 100) / 100}`;
     const colour = ((index+1)%2 === 0 ? "#bb3e3b" : "#779126")
     const textPosition = ((index+1)%2 === 0 ? "top" : "bottom")
     const node = {
