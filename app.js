@@ -23,14 +23,12 @@ app.controller("conversion", [
     $scope.apiError = false;
     $scope.isGraph = false;
 
-
     // calculates todays exchange rate based on the currency in From compared to To
     function calcExchangeRate() {
       const { currencies, fromSelected, toSelected } = $scope;
       $scope.exchangeRate =
         (1 / currencies[fromSelected.trim()]) * currencies[toSelected.trim()];
     }
-
 
     // make an api call to get exchange rate over the last month
     function getMonthlyRate() {
@@ -39,7 +37,7 @@ app.controller("conversion", [
       let currentYear = date.getFullYear();
       let startMonth = currentMonth - 1;
       let startYear = currentYear;
-      
+
       if (currentMonth == 1) {
         startMonth = 12;
         startYear = currentYear - 1;
@@ -57,11 +55,11 @@ app.controller("conversion", [
         )
         .then(result => drawGraph(result.data))
         .catch(error => {
-          $log.warn(error)
+          $log.warn(error);
           $scope.apiError = true;
         });
 
-        $scope.isGraph =true;
+      $scope.isGraph = true;
     }
 
     // handles selection from list event in the From side
@@ -100,21 +98,20 @@ app.controller("conversion", [
   }
 ]);
 
-
 // draw a graph for an exhange rate over a period of time
 function drawGraph(data) {
   let cy = cytoscape({
     container: document.getElementById("cy"),
     zoom: 1,
-    pan: {x:0, y:0},
+    pan: { x: 0, y: 0 },
     style: [
       // the stylesheet for the graph
       {
         selector: "node",
         style: {
           "background-color": "#779126",
-          "label": "data(id)",
-          "color": "black"
+          label: "data(id)",
+          color: "black"
         }
       }
     ]
@@ -126,13 +123,17 @@ function drawGraph(data) {
     const positionX = index * 30;
     const positionY = (getY(dailyRate) - minRate) * 40;
     const label = `(${index + 1})${Math.round(dailyRate * 100) / 100}`;
-    const colour = ((index+1)%2 === 0 ? "#bb3e3b" : "#779126")
-    const textPosition = ((index+1)%2 === 0 ? "top" : "bottom")
+    const colour = (index + 1) % 2 === 0 ? "#bb3e3b" : "#779126";
+    const textPosition = (index + 1) % 2 === 0 ? "top" : "bottom";
     const node = {
       group: "nodes",
       data: { id: label },
       position: { x: positionX, y: positionY },
-      style: {color: colour, "background-color":colour, "text-valign": textPosition}
+      style: {
+        color: colour,
+        "background-color": colour,
+        "text-valign": textPosition
+      }
     };
     return node;
   });
@@ -153,14 +154,11 @@ function drawGraph(data) {
   cy.add(nodes);
   cy.add(edges);
 
-  cy.animate(
-    {
+  cy.animate({
     pan: { x: 100, y: 50 },
-  zoom: 0.7,
-  duration: 1000
-    }
-  )
-  
+    zoom: 0.7,
+    duration: 1000
+  });
 }
 
 // find the smallest exchange rate in a given list

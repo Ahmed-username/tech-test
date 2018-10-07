@@ -1,11 +1,9 @@
-
- body {
-  background-image: repeating-linear-gradient( #3b8ec2, #ddd, #3b8ec2);
-  
+body {
+  background-image: repeating-linear-gradient(#3b8ec2, #ddd, #3b8ec2);
 }
 
-.header{
-  font-family: 'Times New Roman', Times, serif;
+.header {
+  font-family: "Times New Roman", Times, serif;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -16,149 +14,160 @@
   flex-direction: row;
   justify-content: center;
 }
-  
-  .converter {
-    text-align: center;
-    margin-top: 10px;
-    font-style: oblique;
-    font-size: 22px;
-  }
-  
- 
 
-  .select-box-center{
-    text-align-last:center;
-  }
+.converter {
+  text-align: center;
+  margin-top: 10px;
+  font-style: oblique;
+  font-size: 22px;
+}
 
-  .margin-left-10px{
-    margin-left: 10px;
-  }
+.select-box-center {
+  text-align-last: center;
+}
 
-  .margin-right-30px {
-    margin-right: 30px;
-  }
-  
-  .margin-bottom-10px {
-    margin-bottom: 10px;
-  }
+.margin-left-10px {
+  margin-left: 10px;
+}
 
-  .white-text{
-    color: white;
-  }
+.margin-right-30px {
+  margin-right: 30px;
+}
 
-  .align-center{
-    text-align: center;
-  }
-  
-  .font-size-18px{
-    font-size: 18px;
-  }
-  
-  
-  .no-cy {
-    color: #e60000;
-    background-color: black;
-    text-align: center;
-  }
+.margin-bottom-10px {
+  margin-bottom: 10px;
+}
 
-  .error {
-    color: #e60000;
-    background-color: black;
-    text-align: center;
-  }
-  
-  #cy {
-    display: none;
-  }
+.white-text {
+  color: white;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.font-size-18px {
+  font-size: 18px;
+}
+
+.no-cy {
+  color: #e60000;
+  background-color: black;
+  text-align: center;
+}
+
+.error {
+  color: #e60000;
+  background-color: black;
+  text-align: center;
+}
+
+#cy {
+  display: none;
+}
 
 /* imported styles - start  */
-  .styled-select {
-    background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
-    height: 29px;
-    overflow: hidden;
-    width: 240px;
- }
- 
- .styled-select select {
-    background: transparent;
-    border: none;
-    font-size: 14px;
-    height: 29px;
-    padding: 5px; /* If you add too much padding here, the options won't show in IE */
-    width: 268px;
- }
- 
- .styled-select.slate {
-    background: url(http://i62.tinypic.com/2e3ybe1.jpg) no-repeat right center;
-    height: 34px;
-    width: 240px;
- }
- 
- .styled-select.slate select {
-    border: 1px solid #ccc;
-    font-size: 16px;
-    height: 34px;
-    width: 268px;
- }
- 
- /* -------------------- Rounded Corners */
- .rounded {
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    border-radius: 20px;
- }
- 
- .semi-square {
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
- }
- 
- /* -------------------- Colors: Background */
- .slate   { background-color: #ddd; }
- .green   { background-color: #779126; }
- .blue    { background-color: #3b8ec2; }
- .yellow  { background-color: #eec111; }
- .black   { background-color: #000; }
- .red     { background-color: rgb(230, 79, 45); }
- 
- /* -------------------- Colors: Text */
- .slate select   { color: #000; }
- .green select   { color: #fff; }
- .blue select    { color: #fff; }
- .yellow select  { color: #000; }
- .black select   { color: #fff; }
- 
- 
+.styled-select {
+  background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+  height: 29px;
+  overflow: hidden;
+  width: 240px;
+}
 
- .search-box {
-	
-	border: 1px solid #ccc;
+.styled-select select {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  height: 29px;
+  padding: 5px; /* If you add too much padding here, the options won't show in IE */
+  width: 268px;
+}
+
+.styled-select.slate {
+  background: url(http://i62.tinypic.com/2e3ybe1.jpg) no-repeat right center;
+  height: 34px;
+  width: 240px;
+}
+
+.styled-select.slate select {
+  border: 1px solid #ccc;
+  font-size: 16px;
+  height: 34px;
+  width: 268px;
+}
+
+/* -------------------- Rounded Corners */
+.rounded {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+
+.semi-square {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/* -------------------- Colors: Background */
+.slate {
+  background-color: #ddd;
+}
+.green {
+  background-color: #779126;
+}
+.blue {
+  background-color: #3b8ec2;
+}
+.yellow {
+  background-color: #eec111;
+}
+.black {
+  background-color: #000;
+}
+.red {
+  background-color: rgb(230, 79, 45);
+}
+
+/* -------------------- Colors: Text */
+.slate select {
+  color: #000;
+}
+.green select {
+  color: #fff;
+}
+.blue select {
+  color: #fff;
+}
+.yellow select {
+  color: #000;
+}
+.black select {
+  color: #fff;
+}
+
+.search-box {
+  border: 1px solid #ccc;
   outline: 0;
   border-radius: 15px;
 }
 .search-box:focus {
-	box-shadow: 0 0 15px 5px #b0e0ee;
-	border: 2px solid #bebede;
+  box-shadow: 0 0 15px 5px #b0e0ee;
+  border: 2px solid #bebede;
 }
-
 
 /* imported styles - end  */
 
-
-  @media (min-width: 800px) {
-   
-  
-    .no-cy {
-      display: none;
-    }
-  
-    #cy {
-      width: 900px;
-      height: 400px;
-      background-color: #ddd;
-      display: block;
-      margin: auto;
-    }
+@media (min-width: 800px) {
+  .no-cy {
+    display: none;
   }
-  
+
+  #cy {
+    width: 900px;
+    height: 400px;
+    background-color: #ddd;
+    display: block;
+    margin: auto;
+  }
+}

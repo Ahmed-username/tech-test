@@ -14,56 +14,52 @@
 
     <h1 class="header">₡urr€ncy ₡onv€rter</h1>
 
-    
+
 
     <div ng-controller="conversion" class="converter">
 
-     <h1 class="error" ng-if="apiError">Api call error. Check Console for more details.</h1>
+        <h1 class="error" ng-if="apiError">Api call error. Check Console for more details.</h1>
 
         <div class="converter__from-to ">
-            
 
-            <input type="number" ng-model="fromBox" 
-            class="margin-bottom-10px search-box align-center yellow margin-right-10px font-size-18px"
-             ng-change="convertFrom(fromBox)"
-                placeholder="Amount" />
+
+            <input type="number" ng-model="fromBox" class="margin-bottom-10px search-box align-center yellow margin-right-10px font-size-18px"
+                ng-change="convertFrom(fromBox)" placeholder="Amount" />
 
             <div class="styled-select yellow rounded margin-left-10px">
 
-            <select ng-model="fromSelected" ng-change="fromSelectionchange(fromBox)" 
-            class=" margin-bottom-10px">
-                <option selected="true" ng-selected="true">GBP</option>
-                <option ng-clock ng-repeat="(currency,rate) in currencies">
-                    {{currency}}
-                </option>
+                <select ng-model="fromSelected" ng-change="fromSelectionchange(fromBox)" class=" margin-bottom-10px">
+                    <option selected="true" ng-selected="true">GBP</option>
+                    <option ng-clock ng-repeat="(currency,rate) in currencies">
+                        {{currency}}
+                    </option>
 
-            </select>
+                </select>
 
-        </div>
+            </div>
 
-            
+
 
         </div>
 
         <div class="converter__from-to">
-            
 
-             <input type="number" ng-model="toBox" 
-             class="margin-bottom-10px search-box align-center green white-text margin-right-10px font-size-18px"
-              ng-change="convertTo(toBox)" placeholder="Amount" />
 
-             <div class="styled-select green rounded margin-left-10px">
+            <input type="number" ng-model="toBox" class="margin-bottom-10px search-box align-center green white-text margin-right-10px font-size-18px"
+                ng-change="convertTo(toBox)" placeholder="Amount" />
 
-            <select ng-model="toSelected" class=" margin-bottom-10px" ng-change="toSelectionchange(toBox)">
-                <option selected="true" ng-selected="true">GBP</option>
-                <option ng-clock ng-repeat="(currency,rate) in currencies">{{currency}}
-                </option>
+            <div class="styled-select green rounded margin-left-10px">
 
-            </select>
+                <select ng-model="toSelected" class=" margin-bottom-10px" ng-change="toSelectionchange(toBox)">
+                    <option selected="true" ng-selected="true">GBP</option>
+                    <option ng-clock ng-repeat="(currency,rate) in currencies">{{currency}}
+                    </option>
+
+                </select>
 
             </div>
 
-           
+
 
         </div>
 
@@ -74,7 +70,8 @@
         <h2 ng-hide="isGraph"> Select a currency to show the graph</h2>
 
         <h3 ng-if="isGraph && !apiError">
-            Here is a graph that shows the exchange rate of 1 {{fromSelected}} to {{toSelected}} from {{startDate}} to {{endDate}}
+            Here is a graph that shows the exchange rate of 1 {{fromSelected}} to {{toSelected}} from {{startDate}} to
+            {{endDate}}
         </h3>
 
 
