@@ -18,7 +18,7 @@
 
     <div ng-controller="conversion" class="converter">
 
-        <h1 class="error" ng-if="apiError">Api call error. Check Console for more details.</h1>
+        <h1 ng-cloak class="error" ng-if="apiError">Api call error. Check Console for more details.</h1>
 
         <div class="converter__from-to ">
 
@@ -52,7 +52,7 @@
 
                 <select ng-model="toSelected" class=" margin-bottom-10px" ng-change="toSelectionchange(toBox)">
                     <option selected="true" ng-selected="true">GBP</option>
-                    <option ng-clock ng-repeat="(currency,rate) in currencies">{{currency}}
+                    <option ng-repeat="(currency,rate) in currencies">{{currency}}
                     </option>
 
                 </select>
@@ -63,13 +63,13 @@
 
         </div>
 
-        <h3 class="margin-bottom-10px">
+        <h3 ng-cloak class="margin-bottom-10px">
             Today's exchange rate for 1 {{fromSelected}} to {{toSelected}} is {{exchangeRate}}
         </h3>
 
         <h2 ng-hide="isGraph"> Select a currency to show the graph</h2>
 
-        <h3 ng-if="isGraph && !apiError">
+        <h3 ng-cloak ng-if="isGraph && !apiError">
             Here is a graph that shows the exchange rate of 1 {{fromSelected}} to {{toSelected}} from {{startDate}} to
             {{endDate}}
         </h3>
