@@ -23,10 +23,10 @@
         <div class="converter__from-to ">
 
 
-            <input type="number" ng-model="fromBox" class="margin-bottom-10px search-box align-center yellow margin-right-10px font-size-18px"
-                ng-change="convertFrom(fromBox)" placeholder="Amount" />
+            <input type="number" ng-model="fromBox" class="search-box yellow" ng-change="convertFrom(fromBox)"
+                placeholder="Amount" />
 
-            <div class="styled-select yellow rounded margin-left-10px">
+            <div class="styled-select yellow rounded">
 
                 <select ng-model="fromSelected" ng-change="fromSelectionchange(fromBox)" class=" margin-bottom-10px">
                     <option selected="true" ng-selected="true">GBP</option>
@@ -45,10 +45,10 @@
         <div class="converter__from-to">
 
 
-            <input type="number" ng-model="toBox" class="margin-bottom-10px search-box align-center green white-text margin-right-10px font-size-18px"
-                ng-change="convertTo(toBox)" placeholder="Amount" />
+            <input type="number" ng-model="toBox" class="search-box green white-text" ng-change="convertTo(toBox)"
+                placeholder="Amount" />
 
-            <div class="styled-select green rounded margin-left-10px">
+            <div class="styled-select green rounded">
 
                 <select ng-model="toSelected" class=" margin-bottom-10px" ng-change="toSelectionchange(toBox)">
                     <option selected="true" ng-selected="true">GBP</option>
@@ -63,7 +63,7 @@
 
         </div>
 
-        <h3 class="exchange-rate margin-bottom-10px">
+        <h3 class="margin-bottom-10px">
             Today's exchange rate for 1 {{fromSelected}} to {{toSelected}} is {{exchangeRate}}
         </h3>
 
