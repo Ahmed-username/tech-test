@@ -20,7 +20,6 @@ describe("graph.js", function() {
     });
 
     it("returns min value in a list of exchange rates", function() {
-      console.log("this", this);
       expect(getMinRate(data)).toBe(1231);
       expect(getMinRate(data2)).toBe(1232);
     });
