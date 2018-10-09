@@ -1,24 +1,14 @@
 // draw a graph for an exhange rate over a period of time
 function drawGraph(data) {
-  let cy = cytoscape({
-    container: document.getElementById("cy"),
-    zoom: 1,
-    pan: { x: 0, y: 0 },
-    style: [
-      // the stylesheet for the graph
-      {
-        selector: "node",
-        style: {
-          "background-color": "#779126",
-          label: "data(id)",
-          color: "black"
-        }
-      }
-    ]
-  });
-  const minRate = getY(getMinRate(data));
+  const nodes = createNodes(data);
 
-  const nodes = Object.keys(data.rates).map((day, index) => {
+  createGraph(nodes, createEdges(nodes));
+}
+
+// creates an array of nodes based on the exchange rate data
+function createNodes(data) {
+  const minRate = getY(getMinRate(data));
+  return Object.keys(data.rates).map((day, index) => {
     const dailyRate = data.rates[day][Object.keys(data.rates[day]).join("")];
     const positionX = index * 30;
     const positionY = (getY(dailyRate) - minRate) * 40;
@@ -37,7 +27,10 @@ function drawGraph(data) {
     };
     return node;
   });
+}
 
+//connect the nodes
+function createEdges(nodes) {
   let edges = [];
   for (let i = 0; i < nodes.length - 1; i++) {
     const egde = {
@@ -50,6 +43,27 @@ function drawGraph(data) {
     };
     edges.push(egde);
   }
+  return edges;
+}
+
+//create the graph from a given nodes and egdes
+function createGraph(nodes, edges) {
+  let cy = cytoscape({
+    container: document.getElementById("cy"),
+    zoom: 1,
+    pan: { x: 0, y: 0 },
+    style: [
+      // the stylesheet for the graph
+      {
+        selector: "node",
+        style: {
+          "background-color": "#779126",
+          label: "data(id)",
+          color: "black"
+        }
+      }
+    ]
+  });
 
   cy.add(nodes);
   cy.add(edges);
