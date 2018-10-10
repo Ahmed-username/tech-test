@@ -28,10 +28,13 @@ describe('app.js', function() {
             AFN: 99.741889,
             ANG: 2.333461
           };
-          const result = convertFrom(2, "AED", "AFN", currencies)
-          $scope.convertTo(2)
-          expect($scope.toBox).toBe(result)
+          const result = convertFrom(2, "AED", "AFN", currencies);
+          $scope.convertFrom(2, "AED", "AFN", currencies);
+          expect($scope.toBox).toBe(result);
 
+          const result2 = convertFrom(3, "AFN", "ANG", currencies)
+          $scope.convertFrom(3, "AFN", "ANG", currencies);
+          expect($scope.toBox).toBe(result2);
       });
 
       it("checks value of $scope.fromSelected after To input ngChange",function(){
@@ -40,6 +43,14 @@ describe('app.js', function() {
             AFN: 99.741889,
             ANG: 2.333461
           };
+
+          const result=convertTo(2, "AED", "AFN", currencies) 
+          $scope.convertTo(2, "AED", "AFN", currencies)
+          expect($scope.fromBox).toBe(result)
+
+          const result2= convertTo(5, "AFN", "ANG", currencies);
+          $scope.convertTo(5, "AFN", "ANG", currencies)
+          expect($scope.fromBox).toBe(result2)
       })
 
 

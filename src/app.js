@@ -59,29 +59,26 @@ app.controller("conversion", [
     }
 
     // handles selection from list event in the From side
-    $scope.fromSelectionchange = function(amount) {
-      $scope.convertFrom(amount);
+    $scope.fromSelectionchange = function(amount, fromSelected, toSelected, currencies) {
+      $scope.convertFrom(amount, fromSelected, toSelected, currencies);
       calcExchangeRate();
       getMonthlyRate();
     };
 
     // handles selection from list event in the To side
-    $scope.toSelectionchange = function(amount) {
-      $scope.convertTo(amount);
+    $scope.toSelectionchange = function(amount, fromSelected, toSelected, currencies) {
+      $scope.convertTo(amount, fromSelected, toSelected, currencies);
       calcExchangeRate();
       getMonthlyRate();
     };
 
     // converts the currency based on the inputs (amount&currency) in From side
-    $scope.convertFrom = function(amount) {
-      const { currencies, fromSelected, toSelected } = $scope;
-
+    $scope.convertFrom = function(amount, fromSelected, toSelected, currencies) {
       $scope.toBox = convertFrom(amount, fromSelected, toSelected, currencies);
     };
 
     // converts the currency based on the inputs (amount&currency) in To side
-    $scope.convertTo = function(amount) {
-      const { currencies, fromSelected, toSelected } = $scope;
+    $scope.convertTo = function(amount, fromSelected, toSelected, currencies) {
 
       $scope.fromBox = convertTo(amount, fromSelected, toSelected, currencies);
     };
