@@ -1,5 +1,4 @@
 function convertFrom(amount, fromSelected, toSelected, currencies) {
-    console.log("currency", currencies)
   const fullNumber =
     (amount / currencies[fromSelected.trim()]) * currencies[toSelected.trim()];
   return Math.round(fullNumber * 10000) / 10000;
