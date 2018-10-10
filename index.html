@@ -23,12 +23,13 @@
         <div class="converter__from-to ">
 
 
-            <input type="number" ng-model="fromBox" class="search-box yellow" ng-change="convertFrom(fromBox)"
+            <input type="number" ng-model="fromBox" class="search-box yellow" ng-change="convertFrom(fromBox, fromSelected, toSelected, currencies)"
                 placeholder="Amount" />
 
             <div class="styled-select yellow rounded">
 
-                <select ng-model="fromSelected" ng-change="fromSelectionchange(fromBox)" class=" margin-bottom-10px">
+                <select ng-model="fromSelected" ng-change="fromSelectionchange(fromBox, fromSelected, toSelected, currencies)"
+                    class=" margin-bottom-10px">
                     <option selected="true" ng-selected="true">GBP</option>
                     <option ng-clock ng-repeat="(currency,rate) in currencies">
                         {{currency}}
@@ -45,12 +46,12 @@
         <div class="converter__from-to">
 
 
-            <input type="number" ng-model="toBox" class="search-box green white-text" ng-change="convertTo(toBox)"
+            <input type="number" ng-model="toBox" class="search-box green white-text" ng-change="convertTo(toBox, fromSelected, toSelected, currencies)"
                 placeholder="Amount" />
 
             <div class="styled-select green rounded">
 
-                <select ng-model="toSelected" class=" margin-bottom-10px" ng-change="toSelectionchange(toBox)">
+                <select ng-model="toSelected" class=" margin-bottom-10px" ng-change="toSelectionchange(toBox, fromSelected, toSelected, currencies)">
                     <option selected="true" ng-selected="true">GBP</option>
                     <option ng-repeat="(currency,rate) in currencies">{{currency}}
                     </option>
