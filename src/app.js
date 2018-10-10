@@ -5,18 +5,8 @@ app.controller("conversion", [
   "$http",
   "$log",
   function($scope, $http, $log) {
-    //fetch todays list of currencies and rates
-    $http
-      .get(
-        "https://openexchangerates.org/api/latest.json?app_id=546b17d695434f74953c47ec5d7f9f7d&base=GBP"
-      )
-      .then(result => ($scope.currencies = result.data.rates))
-      .catch(err => {
-        $log.warn(err);
-        $scope.apiError = true;
-      });
-
     //currency converter initial values
+    getExchangeRates();
     $scope.fromSelected = "GBP";
     $scope.toSelected = "GBP";
     $scope.exchangeRate = 1;
@@ -35,6 +25,58 @@ app.controller("conversion", [
       );
     }
 
+    // handles selection from list event in the From side
+    $scope.fromSelectionchange = function(
+      amount,
+      fromSelected,
+      toSelected,
+      currencies
+    ) {
+      $scope.convertFrom(amount, fromSelected, toSelected, currencies);
+      calcExchangeRate();
+      getMonthlyRate();
+    };
+
+    // handles selection from list event in the To side
+    $scope.toSelectionchange = function(
+      amount,
+      fromSelected,
+      toSelected,
+      currencies
+    ) {
+      $scope.convertTo(amount, fromSelected, toSelected, currencies);
+      calcExchangeRate();
+      getMonthlyRate();
+    };
+
+    // converts the currency based on the inputs (amount&currency) in From side
+    $scope.convertFrom = function(
+      amount,
+      fromSelected,
+      toSelected,
+      currencies
+    ) {
+      $scope.toBox = convertFrom(amount, fromSelected, toSelected, currencies);
+    };
+
+    // converts the currency based on the inputs (amount&currency) in To side
+    $scope.convertTo = function(amount, fromSelected, toSelected, currencies) {
+      $scope.fromBox = convertTo(amount, fromSelected, toSelected, currencies);
+    };
+
+    //fetch todays list of currencies and rates
+    function getExchangeRates() {
+      $http
+        .get(
+          "https://openexchangerates.org/api/latest.json?app_id=546b17d695434f74953c47ec5d7f9f7d&base=GBP"
+        )
+        .then(result => ($scope.currencies = result.data.rates))
+        .catch(err => {
+          $log.warn(err);
+          $scope.apiError = true;
+        });
+    }
+
     // make an api call to get exchange rate over the last month
     function getMonthlyRate() {
       const dates = getDates();
@@ -49,38 +91,14 @@ app.controller("conversion", [
             dates.currentMonth
           }-01&symbols=${$scope.toSelected.trim()}&base=${$scope.fromSelected.trim()}`
         )
-        .then(result => drawGraph(result.data))
+        .then(result => {
+          drawGraph(result.data);
+          $scope.isGraph = true;
+        })
         .catch(error => {
           $log.warn(error);
           $scope.apiError = true;
         });
-
-      $scope.isGraph = true;
     }
-
-    // handles selection from list event in the From side
-    $scope.fromSelectionchange = function(amount, fromSelected, toSelected, currencies) {
-      $scope.convertFrom(amount, fromSelected, toSelected, currencies);
-      calcExchangeRate();
-      getMonthlyRate();
-    };
-
-    // handles selection from list event in the To side
-    $scope.toSelectionchange = function(amount, fromSelected, toSelected, currencies) {
-      $scope.convertTo(amount, fromSelected, toSelected, currencies);
-      calcExchangeRate();
-      getMonthlyRate();
-    };
-
-    // converts the currency based on the inputs (amount&currency) in From side
-    $scope.convertFrom = function(amount, fromSelected, toSelected, currencies) {
-      $scope.toBox = convertFrom(amount, fromSelected, toSelected, currencies);
-    };
-
-    // converts the currency based on the inputs (amount&currency) in To side
-    $scope.convertTo = function(amount, fromSelected, toSelected, currencies) {
-
-      $scope.fromBox = convertTo(amount, fromSelected, toSelected, currencies);
-    };
   }
 ]);
